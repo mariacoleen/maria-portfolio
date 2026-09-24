@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maria Coleen Flores — Creative Professional</title>
+<meta name="description" content="Maria Coleen Flores — creative professional working across social media, graphic design, video editing, and digital marketing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --burgundy:#6E1423;
+    --burgundy-deep:#4A0D18;
+    --cream:#FAF3EC;
+    --paper:#F4EAE1;
+    --blush:#E9D3CB;
+    --charcoal:#241E1D;
+    --charcoal-soft:#5B514E;
+    --line: rgba(36,30,29,0.16);
+    --serif:'Bodoni Moda', Georgia, 'Times New Roman', serif;
+    --sans:'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--charcoal);
+    font-family:var(--sans); line-height:1.6; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+  @media (max-width:640px){ .wrap{padding:0 22px;} }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:80;
+    background:rgba(250,243,236,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:22px 40px; max-width:1180px; margin:0 auto; }
+  .nav-name{ font-family:var(--serif); font-weight:600; font-size:1.15rem; letter-spacing:0.03em; }
+  .nav-links{ display:flex; gap:34px; list-style:none; margin:0; padding:0; }
+  .nav-links a{ font-size:0.82rem; letter-spacing:0.06em; text-decoration:none; color:var(--charcoal-soft); padding-bottom:3px; border-bottom:1px solid transparent; transition:border-color .2s ease, color .2s ease;}
+  .nav-links a:hover{ color:var(--burgundy); border-color:var(--burgundy); }
+  .nav-cta{ font-size:0.8rem; letter-spacing:0.05em; text-decoration:none; color:var(--cream); background:var(--burgundy); padding:11px 22px; transition:background .2s ease; }
+  .nav-cta:hover{ background:var(--burgundy-deep); }
+  .nav-toggle{ display:none; background:none; border:none; font-size:1.4rem; color:var(--charcoal); cursor:pointer; }
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .nav-cta{ display:none; }
+    .nav-toggle{ display:block; }
+  }
+  .mobile-menu{ display:none; flex-direction:column; padding:0 40px 24px; gap:16px; border-bottom:1px solid var(--line); }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ text-decoration:none; color:var(--charcoal); font-size:0.95rem; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:70px 0 40px; }
+  .hero-grid{ max-width:820px; }
+  .hero-kicker{ font-size:0.82rem; letter-spacing:0.14em; color:var(--burgundy); font-weight:600; margin:0 0 18px; }
+  .hero h1{
+    font-family:var(--serif); font-weight:500; font-size:clamp(2.8rem, 7vw, 5.6rem);
+    line-height:0.98; letter-spacing:-0.01em; margin:0 0 30px;
+  }
+  .hero h1 span{ display:block; }
+  .hero h1 .accent{ font-style:italic; color:var(--burgundy); }
+  .hero-sub{ font-size:1.08rem; color:var(--charcoal-soft); max-width:44ch; margin:0 0 30px; }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 28px; text-decoration:none; font-size:0.85rem; letter-spacing:0.05em; font-weight:500; transition:transform .15s ease, background .2s ease, color .2s ease; }
+  .btn-solid{ background:var(--burgundy); color:var(--cream); }
+  .btn-solid:hover{ background:var(--burgundy-deep); transform:translateY(-1px); }
+  .btn-line{ border:1px solid var(--charcoal); color:var(--charcoal); }
+  .btn-line:hover{ background:var(--charcoal); color:var(--cream); }
+
+  .hero-photo-wrap{ position:relative; }
+  .hero-photo{
+    width:100%; aspect-ratio:3/4; overflow:hidden;
+    border-radius:2px; position:relative;
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
+  .hero-photo::after{
+    content:""; position:absolute; inset:0;
+    border:1px solid var(--line); pointer-events:none;
+  }
+  .hero-tag{
+    position:absolute; bottom:-18px; left:-22px; background:var(--burgundy); color:var(--cream);
+    padding:14px 20px; font-family:var(--serif); font-style:italic; font-size:1rem;
+  }
+  @media (max-width:860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-photo-wrap{ order:-1; max-width:340px; margin:0 auto 20px; }
+    .hero-tag{ left:10px; }
+  }
+
+  .marquee{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:16px 0; overflow:hidden; white-space:nowrap; margin-top:60px;
+  }
+  .marquee-track{ display:inline-block; animation:scroll 26s linear infinite; font-family:var(--serif); font-style:italic; font-size:1.05rem; color:var(--charcoal-soft); }
+  .marquee-track span{ margin:0 26px; }
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; } }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:100px 0; border-top:1px solid var(--line); }
+  .eyebrow{ font-size:0.82rem; letter-spacing:0.14em; color:var(--burgundy); font-weight:600; margin:0 0 16px; }
+  .section-title{ font-family:var(--serif); font-weight:500; font-size:clamp(2.1rem,4vw,3.2rem); margin:0 0 20px; letter-spacing:-0.01em; }
+
+  /* ---------- About ---------- */
+  .about-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start; }
+  .about-photo{ position:relative; }
+  .about-photo img{ width:100%; border-radius:2px; }
+  .about-body p{ font-size:1.12rem; color:var(--charcoal-soft); max-width:56ch; margin:0 0 20px; }
+  .about-body p:first-of-type{ font-family:var(--serif); font-size:1.5rem; color:var(--charcoal); font-style:italic; line-height:1.4; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:32px; } .about-photo{ max-width:320px; } }
+
+  /* ---------- What I do ---------- */
+  .do-list{ margin-top:20px; }
+  .do-item{ display:grid; grid-template-columns:100px 1fr 1.2fr; gap:24px; align-items:start; padding:30px 0; border-top:1px solid var(--line); }
+  .do-item:last-child{ border-bottom:1px solid var(--line); }
+  .do-num{ font-family:var(--serif); font-size:2rem; color:var(--blush); font-weight:500; }
+  .do-name{ font-family:var(--serif); font-size:1.5rem; font-weight:500; }
+  .do-desc{ color:var(--charcoal-soft); font-size:1rem; max-width:52ch; }
+  @media (max-width:720px){ .do-item{ grid-template-columns:60px 1fr; } .do-desc{ grid-column:2; } }
+
+  /* ---------- Experience ---------- */
+  .exp-item{ display:grid; grid-template-columns:80px 200px 1fr; gap:24px; padding:34px 0; border-top:1px solid var(--line); align-items:start; }
+  .exp-item:last-child{ border-bottom:1px solid var(--line); }
+  .exp-num{ font-family:var(--serif); font-size:1.5rem; color:var(--blush); }
+  .exp-meta{ }
+  .exp-dates{ font-size:0.82rem; letter-spacing:0.05em; color:var(--burgundy); font-weight:600; margin-bottom:8px; }
+  .exp-role{ font-family:var(--serif); font-size:1.3rem; }
+  .exp-type{ font-size:0.85rem; color:var(--charcoal-soft); font-style:italic; }
+  .exp-desc{ color:var(--charcoal-soft); font-size:1rem; max-width:56ch; }
+  @media (max-width:720px){ .exp-item{ grid-template-columns:1fr; gap:8px; } }
+
+  /* ---------- Education ---------- */
+  .edu-item{ display:flex; justify-content:space-between; gap:24px; padding:26px 0; border-top:1px solid var(--line); flex-wrap:wrap; }
+  .edu-item:last-child{ border-bottom:1px solid var(--line); }
+  .edu-dates{ font-size:0.85rem; color:var(--burgundy); font-weight:600; letter-spacing:0.04em; min-width:150px; }
+  .edu-name{ font-family:var(--serif); font-size:1.2rem; }
+  .edu-sub{ color:var(--charcoal-soft); font-size:0.95rem; margin-top:4px; }
+
+  /* ---------- Skills / languages / tools ---------- */
+  .triple-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:50px; margin-top:10px; }
+  .triple-col h3{ font-family:var(--serif); font-size:1.2rem; font-weight:500; margin:0 0 18px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+  .triple-col ul{ list-style:none; margin:0; padding:0; }
+  .triple-col li{ font-size:1rem; color:var(--charcoal-soft); padding:9px 0; border-bottom:1px dashed var(--line); }
+  .triple-col li:last-child{ border-bottom:none; }
+  .lang-level{ float:right; color:var(--burgundy); font-size:0.85rem; }
+  @media (max-width:820px){ .triple-grid{ grid-template-columns:1fr; gap:34px; } }
+
+  /* ---------- Personality ---------- */
+  .personality-row{ display:flex; flex-wrap:wrap; gap:18px 40px; margin-top:10px; }
+  .personality-row span{ font-family:var(--serif); font-style:italic; font-size:clamp(1.4rem,3vw,2.1rem); color:var(--charcoal); }
+  .personality-row span::after{ content:"·"; margin-left:38px; color:var(--blush); }
+  .personality-row span:last-child::after{ content:""; margin:0; }
+
+  /* ---------- Selected work ---------- */
+  .work-placeholder{
+    margin-top:20px; border:1px dashed var(--line); padding:70px 40px; text-align:center;
+    background:var(--paper);
+  }
+  .work-placeholder p{ font-family:var(--serif); font-style:italic; font-size:1.3rem; color:var(--charcoal-soft); margin:0; }
+
+  /* ---------- Contact ---------- */
+  section.contact{ background:var(--charcoal); color:var(--cream); border-top:none; }
+  .contact-title{ font-family:var(--serif); font-weight:500; font-size:clamp(2.4rem,6vw,4.4rem); line-height:1.04; margin:0 0 30px; }
+  .contact-title em{ font-style:italic; color:var(--blush); }
+  .contact-row{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:30px; margin-top:50px; }
+  .contact-details{ display:flex; flex-direction:column; gap:10px; font-size:1rem; color:rgba(250,243,236,0.85); }
+  .contact-details a{ text-decoration:none; color:inherit; border-bottom:1px solid rgba(250,243,236,0.3); padding-bottom:1px; }
+  .contact-details a:hover{ border-color:var(--blush); color:var(--blush); }
+  .contact-socials{ display:flex; gap:22px; }
+  .contact-socials a{ text-decoration:none; font-size:0.9rem; letter-spacing:0.04em; color:rgba(250,243,236,0.85); border-bottom:1px solid rgba(250,243,236,0.3); padding-bottom:2px; }
+  .contact-socials a:hover{ color:var(--blush); border-color:var(--blush); }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--charcoal); color:rgba(250,243,236,0.7); padding:34px 0 44px; border-top:1px solid rgba(250,243,236,0.14); }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:0.85rem; }
+  .footer-inner strong{ color:var(--cream); font-family:var(--serif); font-weight:500; }
+  .footer-social-icons{ display:flex; gap:14px; order:2; }
+  .footer-social-icons a{ display:inline-flex; width:26px; height:26px; }
+  .footer-social-icons img{ width:100%; height:100%; border-radius:50%; opacity:0.9; transition:opacity .2s ease, transform .2s ease; }
+  .footer-social-icons a:hover img{ opacity:1; transform:translateY(-2px); }
+  @media (max-width:640px){ .footer-inner{ flex-direction:column; text-align:center; } .footer-social-icons{ order:0; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Maria</div>
+    <ul class="nav-links">
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#experience">EXPERIENCE</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#work">WORK</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">LET'S WORK TOGETHER</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">☰</button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none;">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-kicker reveal">Creative Professional / Virtual Assistant</p>
+        <h1 class="reveal">
+          <span>Creative work.</span>
+          <span>Digital details.</span>
+          <span class="accent">A personal touch.</span>
+        </h1>
+        <p class="hero-sub reveal">I'm Maria Coleen Flores — a psychology student and creative freelancer who moves easily between social content, graphic design, video editing, and the everyday details that keep a brand running.</p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-solid" href="#contact">Let's work together</a>
+          <a class="btn btn-line" href="#about">More about me</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee reveal">
+      <div class="marquee-track">
+        <span>SOCIAL MEDIA</span><span>GRAPHIC DESIGN</span><span>VIDEO EDITING</span><span>DIGITAL MARKETING</span><span>CONTENT CREATION</span>
+        <span>SOCIAL MEDIA</span><span>GRAPHIC DESIGN</span><span>VIDEO EDITING</span><span>DIGITAL MARKETING</span><span>CONTENT CREATION</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="avatar-full.jpg" alt="Maria Coleen Flores portrait">
+      </div>
+      <div class="about-body reveal">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">Meet Maria Coleen.</h2>
+        <p>I'm Maria Coleen Flores, a Psychology student with a growing passion for creative digital work.</p>
+        <p>I first discovered my love for design and content creation through school programs and my role as a youth leader in our community. Since then, I've gained hands-on experience in social media management, digital marketing, video editing, and graphic design.</p>
+        <p>With a background in psychology, I bring a deeper understanding of audience behavior and engagement, helping me create content that's both strategic and meaningful. I've managed social media pages, created engaging graphics, edited promotional videos, and built content calendars that align with brand goals.</p>
+        <p>I combine creativity with clear communication and always strive for quality in every project.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section id="skills">
+    <p class="eyebrow reveal">What I Do</p>
+    <h2 class="section-title reveal">Where my attention goes.</h2>
+    <div class="do-list">
+      <div class="do-item reveal">
+        <div class="do-num">01</div>
+        <div class="do-name">Social Media</div>
+        <div class="do-desc">Planning content, keeping a posting rhythm, and responding to a community in a brand's own voice.</div>
+      </div>
+      <div class="do-item reveal">
+        <div class="do-num">02</div>
+        <div class="do-name">Graphic Design</div>
+        <div class="do-desc">Designing posts, promos, and visuals that stay consistent with a brand's look and feel.</div>
+      </div>
+      <div class="do-item reveal">
+        <div class="do-num">03</div>
+        <div class="do-name">Video Editing</div>
+        <div class="do-desc">Cutting and pacing footage into clips built for how people actually watch — short, clear, and engaging.</div>
+      </div>
+      <div class="do-item reveal">
+        <div class="do-num">04</div>
+        <div class="do-name">Digital Marketing</div>
+        <div class="do-desc">Thinking through what a piece of content is meant to do, not just how it looks.</div>
+      </div>
+      <div class="do-item reveal">
+        <div class="do-num">05</div>
+        <div class="do-name">Content Creation</div>
+        <div class="do-desc">Turning an idea into a finished post, reel, or graphic from start to end.</div>
+      </div>
+      <div class="do-item reveal">
+        <div class="do-num">06</div>
+        <div class="do-name">Community &amp; Social Management</div>
+        <div class="do-desc">Keeping conversations, comments, and messages handled with a personal touch.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="eyebrow reveal">Experience</p>
+    <h2 class="section-title reveal">What I've worked on.</h2>
+
+    <div class="exp-item reveal">
+      <div class="exp-num">01</div>
+      <div class="exp-meta">
+        <div class="exp-dates">2023 — 2025</div>
+        <div class="exp-role">Video Editor</div>
+        <div class="exp-type">Freelance</div>
+      </div>
+      <div class="exp-desc">I craft compelling video content for advertising and social media that captures attention and delivers results.</div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-num">02</div>
+      <div class="exp-meta">
+        <div class="exp-dates">2024 — 2025</div>
+        <div class="exp-role">Graphic Designer</div>
+        <div class="exp-type">Freelance</div>
+      </div>
+      <div class="exp-desc">I create graphic content like layouts, graphics, and ad material for different clients.</div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-num">03</div>
+      <div class="exp-meta">
+        <div class="exp-dates">2023 — 2025</div>
+        <div class="exp-role">SK Council Official</div>
+        <div class="exp-type">Full-time</div>
+      </div>
+      <div class="exp-desc">I assist in guiding youth programs and planning community development activities within our barangay.</div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-num">04</div>
+      <div class="exp-meta">
+        <div class="exp-dates">2023 — 2025</div>
+        <div class="exp-role">Social Media Manager</div>
+        <div class="exp-type">Part-time</div>
+      </div>
+      <div class="exp-desc">I manage content creation, posting, and interaction across multiple social media sites.</div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="eyebrow reveal">Education</p>
+    <h2 class="section-title reveal">Where I've studied.</h2>
+
+    <div class="edu-item reveal">
+      <div class="edu-dates">2024 — Present</div>
+      <div>
+        <div class="edu-name">City College of Angeles</div>
+        <div class="edu-sub">Bachelor of Science in Psychology</div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-dates">2022 — 2024</div>
+      <div>
+        <div class="edu-name">AMA Computer College</div>
+        <div class="edu-sub">Humanities and Social Sciences Strand</div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-dates">2018 — 2022</div>
+      <div>
+        <div class="edu-name">Angeles City National High School</div>
+        <div class="edu-sub">Special Program in Arts (SPA)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS / LANGUAGES / TOOLS -->
+  <section id="qualities">
+    <p class="eyebrow reveal">Beyond the Titles</p>
+    <h2 class="section-title reveal">Skills, languages &amp; tools.</h2>
+    <div class="triple-grid">
+      <div class="triple-col reveal">
+        <h3>Soft Skills</h3>
+        <ul>
+          <li>Creative</li>
+          <li>Time Management</li>
+          <li>Attention to Detail</li>
+          <li>Adaptability</li>
+          <li>Flexible</li>
+          <li>Communication</li>
+          <li>Collaborative</li>
+        </ul>
+      </div>
+      <div class="triple-col reveal">
+        <h3>Languages</h3>
+        <ul>
+          <li>Filipino <span class="lang-level">Native</span></li>
+          <li>English <span class="lang-level">Intermediate</span></li>
+        </ul>
+      </div>
+      <div class="triple-col reveal">
+        <h3>Tools</h3>
+        <ul>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+          <li>Canva</li>
+          <li>CapCut</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONALITY -->
+  <section id="personality">
+    <p class="eyebrow reveal">More Than a Resume</p>
+    <h2 class="section-title reveal">Who I am, beyond the titles.</h2>
+    <div class="personality-row reveal">
+      <span>Creative</span><span>Curious</span><span>Detail-oriented</span><span>Adaptable</span><span>Always learning</span>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section id="work">
+    <p class="eyebrow reveal">Selected Work</p>
+    <h2 class="section-title reveal">Portfolio, coming soon.</h2>
+    <div class="work-placeholder reveal">
+      <p>Portfolio projects are currently being prepared.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="color:var(--blush);">Contact</p>
+    <h2 class="contact-title reveal">Let's create <em>something meaningful.</em></h2>
+    <div class="contact-row reveal">
+      <div class="contact-details">
+        <a href="mailto:mariacoleenf@gmail.com">mariacoleenf@gmail.com</a>
+        <a href="tel:+639949178864">+63 994 917 8864</a>
+        <span>LinkedIn — Maria Coleen Flores</span>
+      </div>
+      <div class="contact-socials">
+        <a href="https://www.facebook.com/Cole3nnn" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/_ma.coleen" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <a class="btn btn-solid" href="mailto:mariacoleenf@gmail.com">Let's work together</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div><strong>Maria Coleen Flores</strong> — Creative Professional / Virtual Assistant</div>
+    <div class="footer-social-icons">
+      <a href="https://www.instagram.com/_ma.coleen" target="_blank" rel="noopener" aria-label="Instagram"><img src="instagram-icon.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/Cole3nnn" target="_blank" rel="noopener" aria-label="Facebook"><img src="facebook-icon.png" alt="Facebook"></a>
+    </div>
+    <div>© 2026 Maria Coleen Flores. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
